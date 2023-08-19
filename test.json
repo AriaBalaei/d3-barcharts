@@ -5,10 +5,10 @@
      "height": 13, 
      "fill": "lightgreen"
   },
-   {"width" : 25, "height": 26, "fill": "purple"},
+   {"width" : 25, "height": 126, "fill": "purple"},
    {"width" : 25, "height": 82, "fill": "gold"},
    {"width" : 25, "height": 104, "fill": "green"},
-   {"width" : 25, "height": 22, "fill": "blue"},
-   {"width" : 25, "height": 37, "fill": "lightgray"},
+   {"width" : 25, "height": 322, "fill": "blue"},
+   {"width" : 25, "height": 637, "fill": "lightgray"},
    {"width" : 25, "height": 56, "fill": "red"}
 ]
