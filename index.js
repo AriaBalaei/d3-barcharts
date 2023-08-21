@@ -58,22 +58,26 @@ const yAxisGroup = graph.append('g')
       rect.data(data)
           .enter().append('rect')
           //animation
-          .transition()
-          .attr('y', d => y(d.height))
-          .delay(function(d ,i) {
-            return i*150;})
-          .ease(d3.easeElasticOut)
+          .attr('y', d => graphHeight)
+          .attr('x', (d ,i) => x(d.fill))  
+          .attr('height', '0')
           .attr('width', (x.bandwidth))
+          .transition()
+          .duration(3000)
+          .delay(function(d ,i) {
+            return i*50;})
+          .ease(d3.easeElasticOut)
+
+
           .attr('height', (d, i) => graphHeight - y(d.height))
-          .attr('fill' , (d) => d.fill)
-          .attr('x', (d ,i) => x(d.fill))      
+          .attr('fill' , (d) => d.fill)    
           .attr('y', (d ,i) => y(d.height)) 
           .on('mouseover',function(event){
-          // console.log(event);
             d3.select(event.target)
                 .transition()
                 .duration(100)
                 .style('opacity', '0.7')
+                
           })
 
           .on('mouseout',function(event){
