@@ -14,6 +14,7 @@ const margin =
     bottom: 70,
     left: 70
   };
+
 const graphWidth = 600 - margin.left - margin.right;
 const graphHeight = 600 - margin.top - margin.bottom;
 
@@ -23,8 +24,6 @@ const graph = svg.append('g')
                 .attr('height', graphHeight)
                 .attr('transform', `translate(${margin.left} 
                   ${margin.top})`)
-
-
 
 //add rect
 const rect = graph.selectAll('rect');
@@ -72,12 +71,13 @@ const yAxisGroup = graph.append('g')
           .attr('height', (d, i) => graphHeight - y(d.height))
           .attr('fill' , (d) => d.fill)    
           .attr('y', (d ,i) => y(d.height)) 
+          .attr('stroke', 'gray')
           .on('mouseover',function(event){
             d3.select(event.target)
                 .transition()
                 .duration(100)
                 .style('opacity', '0.7')
-                
+
           })
 
           .on('mouseout',function(event){
@@ -86,8 +86,4 @@ const yAxisGroup = graph.append('g')
                   .duration(100)
                   .style('opacity', '1')
             })
-
-
-
-
     });
