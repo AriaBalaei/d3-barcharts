@@ -1,14 +1,52 @@
 
 [
-    {
+   {
      "width" : 25, 
-     "height": 13, 
-     "fill": "black"
-  },
-   {"width" : 25, "height": 126, "fill": "purple"},
-   {"width" : 25, "height": 82, "fill": "silver"},
-   {"width" : 25, "height": 104, "fill": "green"},
-   {"width" : 25, "height": 322, "fill": "blue"},
-   {"width" : 25, "height": 637, "fill": "yellow"},
-   {"width" : 25, "height": 56, "fill": "red"}
+     "height": 17.098, 
+     "fill": "lightblue",
+     "name": "Russia",
+     "image": "https://hatscripts.github.io/circle-flags/flags/ru.svg"
+   },
+   {
+      "width" : 25,
+      "height": 9.984,
+      "fill": "red",
+      "name": "Canda",
+      "image": "https://hatscripts.github.io/circle-flags/flags/ca.svg"
+   },
+   {
+      "width" : 25,
+      "height": 9.826,
+      "fill": "lightgray",
+      "name": "USA",
+      "image": "https://hatscripts.github.io/circle-flags/flags/us.svg"
+   },
+   {
+      "width" : 25,
+      "height": 9.596,
+      "fill": "lightpink",
+      "name": "China",
+      "image": "https://hatscripts.github.io/circle-flags/flags/cn.svg"
+   },
+   {
+      "width" : 25,
+      "height": 8.514,
+      "fill": "lightgreen",
+      "name": "Brazil",
+      "image": "https://hatscripts.github.io/circle-flags/flags/br.svg"
+   },
+   {
+      "width" : 25,
+      "height": 7.741,
+      "fill": "yellow",
+      "name": "Austrealia",
+      "image": "https://hatscripts.github.io/circle-flags/flags/au.svg"
+   },
+   {
+      "width" : 25,
+      "height": 3.287,
+      "fill": "orange",
+      "name": "India",
+      "image": "https://hatscripts.github.io/circle-flags/flags/in.svg"
+   }
 ]

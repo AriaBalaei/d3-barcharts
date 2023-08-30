@@ -15,6 +15,8 @@ const margin =
     left: 70
   };
 
+  col_rel = '/test.json'
+
 const graphWidth = 600 - margin.left - margin.right;
 const graphHeight = 600 - margin.top - margin.bottom;
 
@@ -34,6 +36,7 @@ const xAxisGroup = graph.append('g')
 const yAxisGroup = graph.append('g')
 
     d3.json('test.json').then(data => {
+      var nameOfCountry = data.map(d => d.name)
       
       //scaleLinear
       const y = d3.scaleLinear()
@@ -48,30 +51,21 @@ const yAxisGroup = graph.append('g')
                   .paddingOuter(0.15)
       
       const yAxis = d3.axisLeft(y);
-      const xAxis = d3.axisBottom(x);
-        
+      const xAxis = d3.axisBottom(x)
+                .tickFormat((d,i) => nameOfCountry[i])
+      
          xAxisGroup.call(xAxis);
          yAxisGroup.call(yAxis);             
-
       //add data to rect
       rect.data(data)
           .enter().append('rect')
           //animation
           .attr('y', d => graphHeight)
           .attr('x', (d ,i) => x(d.fill))  
-          .attr('height', '0')
+          .attr('height', 0)
           .attr('width', (x.bandwidth))
-          .transition()
-          .duration(3000)
-          .delay(function(d ,i) {
-            return i*50;})
-          .ease(d3.easeElasticOut)
-
-
-          .attr('height', (d, i) => graphHeight - y(d.height))
-          .attr('fill' , (d) => d.fill)    
-          .attr('y', (d ,i) => y(d.height)) 
           .attr('stroke', 'gray')
+          .attr('fill' , (d) => d.fill)    
           .on('mouseover',function(event){
             d3.select(event.target)
                 .transition()
@@ -79,11 +73,28 @@ const yAxisGroup = graph.append('g')
                 .style('opacity', '0.7')
 
           })
-
           .on('mouseout',function(event){
-              d3.select(event.target)
-                  .transition()
-                  .duration(100)
-                  .style('opacity', '1')
-            })
+            d3.select(event.target)
+                .transition()
+                .duration(100)
+                .style('opacity', '1')
+          })
+          .transition()
+          .duration(3000)
+          .delay(function(d ,i) {
+            return i*50;})
+          .ease(d3.easeElasticOut)
+
+          .attr('height', (d, i) => graphHeight - y(d.height))
+          .attr('y', (d ,i) => y(d.height)) 
+
+          const flagImage = graph
+          .selectAll("image")
+          .data(data)
+          .enter()
+          .append("image")
+          .attr("xlink:href", d=> d.image)
+          .attr("x", (d)=> x(d.fill))
+          .attr("y", d => y(d.height) + 10)
+          .attr("width", x.bandwidth)
     });
