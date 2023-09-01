@@ -1,2 +1,7 @@
-![Screenshot 2023-08-25 141823](https://github.com/AriaBalaei/d3-barcharts/assets/141871802/cdc9348c-b568-4e86-8a26-eca265429882)# Bar Chart!
-[Uploading Screenshot 2023-08-25 141823.png…]()
+# Bar Chart!
+![Screenshot 2023-09-01 120627](https://github.com/AriaBalaei/d3-barcharts/assets/141871802/a04208b4-9106-4ce4-8c4c-2eebf7a88dee)
+
+## How to run
+
+ - open in vscode
+ - run `index.html` on live server.
