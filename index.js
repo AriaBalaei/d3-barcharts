@@ -15,6 +15,8 @@ const margin =
     left: 70
   };
 
+  var duration = 3000
+  var delay = 0;
   col_rel = '/test.json'
 
 const graphWidth = 600 - margin.left - margin.right;
@@ -66,35 +68,43 @@ const yAxisGroup = graph.append('g')
           .attr('width', (x.bandwidth))
           .attr('stroke', 'gray')
           .attr('fill' , (d) => d.fill)    
-          .on('mouseover',function(event){
-            d3.select(event.target)
-                .transition()
-                .duration(100)
-                .style('opacity', '0.7')
-
-          })
-          .on('mouseout',function(event){
-            d3.select(event.target)
-                .transition()
-                .duration(100)
-                .style('opacity', '1')
-          })
           .transition()
-          .duration(3000)
+          .duration(duration)
           .delay(function(d ,i) {
-            return i*50;})
+            delay += i*50
+            return i*50
+          })
           .ease(d3.easeElasticOut)
-
           .attr('height', (d, i) => graphHeight - y(d.height))
           .attr('y', (d ,i) => y(d.height)) 
+          .on("end", function(){
+            addMouseEvent(d3.select(this))
+          })
 
           const flagImage = graph
           .selectAll("image")
           .data(data)
           .enter()
           .append("image")
+          .call(selection => addMouseEvent(selection))
           .attr("xlink:href", d=> d.image)
           .attr("x", (d)=> x(d.fill))
-          .attr("y", d => y(d.height) + 10)
+          .attr("y", d => y(d.height) + 5)
           .attr("width", x.bandwidth)
+
+          function addMouseEvent(selection){
+            selection
+              .on('mouseover',function(event){
+                d3.select(event.target)
+                    .transition()
+                    .duration(200)
+                    .style('opacity', '0.5')
+              })
+              .on('mouseout',function(event){
+                d3.select(event.target)
+                    .transition()
+                    .duration(200)
+                    .style('opacity', '1')
+              })
+          }
     });
